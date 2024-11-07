@@ -1,16 +1,29 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<script src="https://kit.fontawesome.com/835ec3a2c5.js" crossorigin="anonymous"></script>
 <style>
+
 .action {
-  float: left;
-  width: 100px;
-  height: 35px;
-  margin: 10px;
-  padding: 10px;
+  width: 60px;
+  height: 60px;
+  margin: 6px;
+  padding: 1px 0px;
   border: 1px solid black;
 }
+
+#movable-item {
+  text-align: center;
+  padding: 14px 0px;
+}
+
+.action-icon {
+  font-size: 30px;
+  --fa-beat-scale: 1.1;
+  --fa-animation-duration: 4s;
+}
 </style>
+
 <script>
 
 // Forcing empty drag data by default. Pass in `?set_drag_data` to
@@ -43,15 +56,17 @@ function drop(ev) {
 </head>
 <body>
 
-<h2>Drag and Drop</h2>
-<p>Drag the text back and forth between the two div elements.</p>
+<h2>Drag and Drop the bug :)</h2>
+<p>Drag the icon back and forth between the two div elements.</p>
 
 <div class="action" ondrop="drop(event)" ondragover="allowDrop(event)">
   <div id="movable-item" draggable="true" ondragstart="drag(event)">
-    <a>Drag me!</a>
+    <a class="fas fa-bug fa-beat action-icon"></a>
   </div>
 </div>
 
+<div class="action" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div class="action" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 <div class="action" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 
 </body>
