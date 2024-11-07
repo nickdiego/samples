@@ -64,10 +64,17 @@ function drop(ev) {
     <a class="fas fa-bug fa-beat action-icon"></a>
   </div>
 </div>
+<div class="action" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div class="action" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div class="action" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 
-<div class="action" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-<div class="action" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-<div class="action" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<p> NOTICE:
+  <i>
+    Broken under Wayland, until
+    <a href="https://issues.chromium.org/377760837">crbug.com/377760837</a>
+    gets fixed.
+  </i>
+</p>
 
 </body>
 </html>
