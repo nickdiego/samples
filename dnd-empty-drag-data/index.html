@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+.action {
+  float: left;
+  width: 100px;
+  height: 35px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+}
+</style>
+<script>
+
+// Forcing empty drag data by default. Pass in `?set_drag_data` to
+// test the code path for non-empty application drag data case.
+const params = new URLSearchParams(window.location.search);
+const force_empty_drag_data = !params.has('set_drag_data');
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  if (force_empty_drag_data) {
+    console.log("Forcing empty app drag data.")
+  } else {
+    ev.dataTransfer.setData("text/plain", ev.target.id);
+  }
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  if (force_empty_drag_data) {
+    ev.target.appendChild(document.getElementById("movable-item"));
+  } else {
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+  }
+}
+</script>
+</head>
+<body>
+
+<h2>Drag and Drop</h2>
+<p>Drag the text back and forth between the two div elements.</p>
+
+<div class="action" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <div id="movable-item" draggable="true" ondragstart="drag(event)">
+    <a>Drag me!</a>
+  </div>
+</div>
+
+<div class="action" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+</body>
+</html>
